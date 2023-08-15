@@ -50,6 +50,7 @@ console.log('array of employee data: ',  employees );
 //
 function calculateIndividualEmployeeBonus( employee ) {  
 
+
 let bonusPercentage
 let totalCompensation
 let totalBonus
@@ -81,37 +82,41 @@ let totalBonus
   totalBonus = bonusPercentage * employee.annualSalary;
   totalCompensation = totalBonus + Number(employee.annualSalary);
   
-  console.log(employee.name);
-  console.log( "bonus percentage",bonusPercentage);
-  console.log("total bonus:", totalBonus);
-  console.log("total comp:", totalCompensation);
+
+  // testing console.logs:
+  // console.log(employee.name);
+  // console.log( "bonus percentage",bonusPercentage);
+  // console.log("total bonus:", totalBonus);
+  // console.log("total comp:", totalCompensation);
 
   
   let employeeUpdated = {
-    name: ,
-    bonusPercentage: ,
-    totalCompensation: ,
-    totalBonus ,
-
-
+    name: employee.name,
+    bonusPercentage: bonusPercentage,
+    totalCompensation: totalCompensation,
+    totalBonus: totalBonus
   };
 
+  return employeeUpdated;
 
-  // return new object with bonus results
-
+  // let newObject = {
+  //   propertyName1: value1,
+  //   propertyName2: value2,
+  //   propertyName1: value1,
+  // }
 } 
 
+// FIRST TEST WITH ONE USER
+// let attyboy =
+// { name: 'Atticus',
+//   employeeNumber: '2405',
+//   annualSalary: '47000',
+//   reviewRating: 3           }
+// console.log(attyboy);
+// let newAtty = calculateIndividualEmployeeBonus(attyboy);
 
-let attyboy = 
-{ name: 'Atticus',
-  employeeNumber: '2405',
-  annualSalary: '47000',
-  reviewRating: 3           }
-
-
-calculateIndividualEmployeeBonus(attyboy);
-// for (let employee of employees){ 
-//   let result = calculateIndividualEmployeeBonus( employee )
-//   console.log(result);
-// }
+for (let employee of employees){ 
+  let result = calculateIndividualEmployeeBonus( employee )
+  console.log(result);
+}
 
