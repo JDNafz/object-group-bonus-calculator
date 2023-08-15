@@ -32,7 +32,7 @@ const employees = [
   }
 ];
 
-console.log('array of employee data: ',  employees );
+// console.log('array of employee data: ',  employees );
 
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
@@ -115,8 +115,24 @@ let totalBonus
 // console.log(attyboy);
 // let newAtty = calculateIndividualEmployeeBonus(attyboy);
 
+let outputForDOM = [];
 for (let employee of employees){ 
   let result = calculateIndividualEmployeeBonus( employee )
-  console.log(result);
+  outputForDOM.push(result);
+  // console.log(result);
+
 }
 
+
+// document.getElementById("demo").innerHTML = "Hello World";
+
+function onClickFunction(){
+  const paragraph = document.createElement("p");
+  const newParagraph = JSON.stringify(outputForDOM);
+  const node = document.createTextNode(newParagraph);
+  paragraph.appendChild(node);
+  
+  const element = document.getElementById("div1");
+  element.appendChild(paragraph);
+}
+console.log('done')
