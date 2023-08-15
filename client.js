@@ -142,12 +142,47 @@ function onClickFunction(){
 // }
 
 
-let text = JSON.stringify(outputForDOM[0]);
-console.log(text);
-const newParagraph = document.createElement("p")
+// let text = JSON.stringify(outputForDOM[0]);
+// console.log(text);
+// const newParagraph = document.createElement("p")
+
+// console.log(outputForDOM[0].totalCompensation)
+
+let testArray= [];
+testArray.push(outputForDOM[0]);
+function addDivs(){
+  for (let employee of testArray){
+    const div = document.createElement('div');
+    div.id = employee.name;
+    div.class = 'block';
+    const para = document.createElement('p');
+    const ul = document.createElement('ul');
+    const li1 = document.createElement('li');
+    const li2 = document.createElement('li');
+    const li3 = document.createElement('li');
+    let bonusPercentText = employee.bonusPercentage*100;
+
+    //continue formating text so it looks nice, ad $ , and other text formatting.
+    const node1 = document.createTextNode(employee.bonusPercentText+'%');
+    console.log(node1);
+    const node2 = document.createTextNode(employee.totalCompensation); // 51230
+    const node3 = document.createTextNode(employee.totalBonus);
+    li1.appendChild(node1);
+    li2.appendChild(node2);
+    ul.appendChild(li1,li2,li3);
+    para.appendChild(ul);
+    div.appendChild(para);
+  }
+} //end addDivs()
+addDivs();
 
 
-// {  "name":"Atticus",
-//    "bonusPercentage":0.09,
-//    "totalCompensation":51230,
-//    "totalBonus":4230}
+// <div class="block">
+// <p>Name: Atticus</p>
+// <ul>
+//   <li>Bonus Percentage: 9%</li>
+//   <li>Total Compensation: $51,230</li>
+//   <li>Total Bonus: $4,230</li>
+// </ul>
+
+// </div>
