@@ -50,8 +50,48 @@ console.log('array of employee data: ',  employees );
 //
 function calculateIndividualEmployeeBonus( employee ) {  
   // your logic here
+let bonusPercentage
+let totalCompensation
+let totalBonus
+  if(employee.reviewRating <= 2){
+    bonusPercentage = 0
+  } else if (employee.reviewRating === 3) {
+    bonusPercentage = 0.04 
+  }else if (employee.reviewRating === 4) {
+    bonusPercentage = 0.06 
+  }else if (employee.reviewRating === 5) {
+    bonusPercentage = 0.1 
+  }
+  if (employee.employeeNumber.length === 4) {
+    bonusPercentage += 0.05 
+  }
+  if(employee.annualSalary > 65000){
+    bonusPercentage -= 0.01
+  }
   
+  //if above the max, set it at the max
+  if (bonusPercentage > 0.13){
+    bonusPercentage = 0.13;
+  }
+  //if it's below the min, set at the min
+  if (bonusPercentage < 0){
+    bonusPercentage = 0;
+  }
+
+//     name: 'Mayella',
+//     employeeNumber: '89068',
+//     annualSalary: '35000',
+//     reviewRating: 1
+
+  totalBonus = bonusPercentage * employee.annualSalary
+  let employeeUpdated = {};
   
   // return new object with bonus results
 
+} 
+calculateIndividualEmployeeBonus('Mayella');
+// for (let employee of employees)
+//  { let result = calculateIndividualEmployeeBonus( employee )
+//   console.log(result);
 }
+
