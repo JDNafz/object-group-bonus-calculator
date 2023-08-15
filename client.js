@@ -149,30 +149,47 @@ function onClickFunction(){
 // console.log(outputForDOM[0].totalCompensation)
 
 let testArray= [];
-testArray.push(outputForDOM[0]);
+testArray.push(outputForDOM[1]);
 function addDivs(){
   for (let employee of testArray){
     const div = document.createElement('div');
     div.id = employee.name;
     div.class = 'block';
     const para = document.createElement('p');
+
+    const nameParagraph = document.createTextNode(employee.name);
+    para.appendChild(nameParagraph); 
+
     const ul = document.createElement('ul');
     const li1 = document.createElement('li');
     const li2 = document.createElement('li');
     const li3 = document.createElement('li');
     let bonusPercentText = employee.bonusPercentage*100;
+    bonusPercentText = "Bonus Percent: " + bonusPercentText + "%";
+    const node1 = document.createTextNode(bonusPercentText);
+    const comp = "Toal Employee Compensation $"
+    const totalCompRaw = employee.totalCompensation ;
+    console.log(typeof totalCompRaw);
+    // if (totalCompRaw >=1000) {
+    //   totalCompRaw[totalCompRaw.length-3].insertHere(',')
+    // }
 
-    //continue formating text so it looks nice, ad $ , and other text formatting.
-    const node1 = document.createTextNode(employee.bonusPercentText+'%');
-    console.log(node1);
-    const node2 = document.createTextNode(employee.totalCompensation); // 51230
+    const node2 = document.createTextNode(comp); // 51230
     const node3 = document.createTextNode(employee.totalBonus);
     li1.appendChild(node1);
     li2.appendChild(node2);
-    ul.appendChild(li1,li2,li3);
+    li3.appendChild(node3);
+    ul.appendChild(li1);
+    ul.appendChild(li2);
+    ul.appendChild(li3);
     para.appendChild(ul);
     div.appendChild(para);
-  }
+    const insertHere = document.getElementById("insertionPoint");
+    const element = document.getElementById("parentDiv");
+    element.appendChild(div);
+    element.insertBefore(insertHere,div); 
+
+  }//end for loop
 } //end addDivs()
 addDivs();
 
