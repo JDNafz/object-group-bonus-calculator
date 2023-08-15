@@ -120,19 +120,34 @@ for (let employee of employees){
   let result = calculateIndividualEmployeeBonus( employee )
   outputForDOM.push(result);
   // console.log(result);
+}//end for loop
 
-}
 
+//GENERATE SIMPLE STRING OUTPUT ON DOM
+//copy contents of function here:
 
-// document.getElementById("demo").innerHTML = "Hello World";
-
+//GENERATE ON CLICK
 function onClickFunction(){
-  const paragraph = document.createElement("p");
-  const newParagraph = JSON.stringify(outputForDOM);
-  const node = document.createTextNode(newParagraph);
-  paragraph.appendChild(node);
+  const paragraph = document.createElement("p"); //create <p></p>
+  const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
+  const node = document.createTextNode(newParagraph);// put string into node
+  paragraph.appendChild(node); //append text node to <p> element as a child
   
   const element = document.getElementById("div1");
-  element.appendChild(paragraph);
+  element.appendChild(paragraph); 
 }
-console.log('done')
+
+// for (let employee of outputForDOM) {
+//   // do for each result.
+// }
+
+
+let text = JSON.stringify(outputForDOM[0]);
+console.log(text);
+const newParagraph = document.createElement("p")
+
+
+// {  "name":"Atticus",
+//    "bonusPercentage":0.09,
+//    "totalCompensation":51230,
+//    "totalBonus":4230}
