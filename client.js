@@ -62,6 +62,7 @@ let totalBonus
   }else if (employee.reviewRating === 5) {
     bonusPercentage = 0.1 
   }
+  console.log(employee.employeeNumber);
   if (employee.employeeNumber.length === 4) {
     bonusPercentage += 0.05 
   }
@@ -89,9 +90,18 @@ let totalBonus
   // return new object with bonus results
 
 } 
-calculateIndividualEmployeeBonus('Mayella');
-// for (let employee of employees)
-//  { let result = calculateIndividualEmployeeBonus( employee )
+
+
+let attyboy = 
+{ name: 'Atticus',
+  employeeNumber: '2405',
+  annualSalary: '47000',
+  reviewRating: 3           }
+
+  
+calculateIndividualEmployeeBonus(attyboy);
+// for (let employee of employees){ 
+//   let result = calculateIndividualEmployeeBonus( employee )
 //   console.log(result);
-}
+// }
 
