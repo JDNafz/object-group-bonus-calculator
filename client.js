@@ -114,18 +114,26 @@ for (let employee of employees){
 
 
 //GENERATE SIMPLE STRING OUTPUT ON DOM
-//copy contents of function here:
+//Basic Box:
+// const paragraph = document.createElement("p"); //create <p></p>
+// const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
+// const node = document.createTextNode(newParagraph);// put string into node
+// paragraph.appendChild(node); //append text node to <p> element as a child
 
+// const element = document.getElementById("div1");
+// element.appendChild(paragraph); 
 
 //GENERATE ON CLICK
 function onClickFunction(){
-  const paragraph = document.createElement("p"); //create <p></p>
-  const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
-  const node = document.createTextNode(newParagraph);// put string into node
-  paragraph.appendChild(node); //append text node to <p> element as a child
-  
-  const element = document.getElementById("div1");
-  element.appendChild(paragraph); 
+addDivs(outputForDOM)
+
+//The following is no longer needed:
+// const paragraph = document.createElement("p"); //create <p></p>
+// const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
+// const node = document.createTextNode(newParagraph);// put string into node
+// paragraph.appendChild(node); //append text node to <p> element as a child
+// const element = document.getElementById("div1");
+// element.appendChild(paragraph); 
 }
 
 // for (let employee of outputForDOM) {
@@ -168,7 +176,7 @@ function addDivs(){
     }
     totalCompUnformatted = employee.totalCompensation.toString() ;
     let totalCompFormatted = comp + totalCompUnformatted.slice(0,totalCompUnformatted.length-3) + "," + totalCompUnformatted.slice(totalCompUnformatted.length-3);
-    const node2 = document.createTextNode(totalCompFormatted); // 51230
+    const node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310
     const node3 = document.createTextNode(employee.totalBonus);
     li1.appendChild(node1);
     li2.appendChild(node2);
@@ -185,7 +193,8 @@ function addDivs(){
 
   }//end for loop
 } //end addDivs()
-addDivs();
+
+addDivs(); //Add first div on RUN
 
 
 // <div class="block">
