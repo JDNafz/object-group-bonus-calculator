@@ -153,12 +153,12 @@ function addDivs(){
     }
     //create totalCompString
     const compStringIntro = "Total Compensation: "
-    if (onlyNeedsOneComma(employee.totalCompensation)){
-      let compensationString = employee.totalCompensation.toLocaleString("en-US",formatting_options) ;
-      let totalCompFormatted = compStringIntro + compensationString;
-      //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
-      var node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
-    } 
+    // if (onlyNeedsOneComma(employee.totalCompensation)){
+    let compensationString = employee.totalCompensation.toLocaleString("en-US",formatting_options) ;
+    let totalCompFormatted = compStringIntro + compensationString;
+    //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
+    let node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
+    // } 
 
 
 // BUG REPORT ------------ BUG REPORT --------------- BUG REPORT
@@ -195,20 +195,22 @@ function addDivs(){
     element.appendChild(div);
     element.insertBefore(insertHere,div); 
 
+
+
   }//end for loop
 } //end addDivs()
 
 // addDivs(); //Add first div on RUN
 
 
-function onlyNeedsOneComma(number){
-  if (number >= 1000000 || number < 1000){
-    console.log("ERROR Over million under thousand total comp", number)
-    return false
-  }
-  // console.log("onlyNeedsOneComma: TRUE")
-  return true
-}
+// function onlyNeedsOneComma(number){
+//   if (number >= 1000000 || number < 1000){
+//     console.log("ERROR Over million under thousand total comp", number)
+//     return false
+//   }
+//   // console.log("onlyNeedsOneComma: TRUE")
+//   return true
+// }
 
 
 
