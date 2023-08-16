@@ -115,28 +115,9 @@ for (let employee of employees){
 
 //GENERATE SIMPLE STRING OUTPUT ON DOM
 //Basic Box:
-// const paragraph = document.createElement("p"); //create <p></p>
-// const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
-// const node = document.createTextNode(newParagraph);// put string into node
-// paragraph.appendChild(node); //append text node to <p> element as a child
-
-// const element = document.getElementById("div1");
-// element.appendChild(paragraph); 
-
-// //GENERATE ON CLICK
-// function onClickFunction(){
-//   // console.log("Output For DOM: ", outputForDOM)
-//   addDivs(outputForDOM);
-// }
 
 
 
-
-// let text = JSON.stringify(outputForDOM[0]);
-// console.log(text);
-// const newParagraph = document.createElement("p");
-
-// console.log(outputForDOM[0].totalCompensation)
 
 
 function addDivs(){
@@ -168,7 +149,7 @@ function addDivs(){
     const compStringIntro = "Total Compensation: $"
     if (onlyNeedsOneComma(employee.totalCompensation)){
       let compToSlice = employee.totalCompensation.toString() ;
-      let totalCompFormatted = compStringIntro + compToSlice.slice(0,compToSlice.length-3) + "," + compToSlice.slice(compToSlice.length-3);
+      let totalCompFormatted = compStringIntro + compToSlice.slice(0,compToSlice.length-3) + "," + compToSlice.slice(compToSlice.length-3);//TODO Find better formatting method for $X,XXX.XX
       //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
       var node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
     } 
@@ -176,8 +157,10 @@ function addDivs(){
     let bonusString = "Bonus: $"
     if (onlyNeedsOneComma(employee.totalBonus)){
       let bonus = employee.totalBonus.toString();
-      let bonusFormatted = bonusString + bonus.slice(0,bonus.length -3) + "," + bonus.slice(bonus.length -3);
+      let bonusFormatted = bonusString + bonus.slice(0,bonus.length -3) + "," + bonus.slice(bonus.length -3); //TODO Find better formatting method for $X,XXX.XX
       var node3 = document.createTextNode(bonusFormatted);
+    } else {
+      console.log(employee.totalBonus,employee.name)
     }
 
     //attach textNodes to HTML elements
@@ -202,7 +185,7 @@ function addDivs(){
 
 function onlyNeedsOneComma(number){
   if (number >= 1000000 || number < 1000){
-    console.log("ERROR Over million under thousand total comp")
+    console.log("ERROR Over million under thousand total comp", number)
     return false
   }
   // console.log("onlyNeedsOneComma: TRUE")
