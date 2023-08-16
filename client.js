@@ -127,7 +127,9 @@ function addDivs(){
     //create a div
     const div = document.createElement('div');
     div.id = employee.name; //give the employee name as an ID
-    div.class = 'block'; //class block for the div
+
+    //class for css is reserved
+    div.classList = ['block']; //class block for the div
 
     const para = document.createElement('p'); //create the <p> tag
     // create the text node, that has the text to be a child of the <p>
@@ -195,9 +197,22 @@ function addDivs(){
     element.appendChild(div);
     element.insertBefore(insertHere,div); 
 
-
-
   }//end for loop
+  
+
+ 
+  $('.block').css('display', 'inline-block');
+  $('.block').css('margin', '10px');
+  $('.block').css('padding', '15px');
+  $('.block').css('background-color',"antiquewhite")
+
+//   .block {
+//     background-color: antiquewhite;
+//     display: inline-block;
+//     margin: 10px;
+//     padding: 15px;
+// }
+
 } //end addDivs()
 
 // addDivs(); //Add first div on RUN
@@ -214,13 +229,11 @@ function addDivs(){
 
 
 
+// $(document).ready(readyNow);
+// function readyNow(){
+//   $
+// }//end readyNow
 
-// <div class="block">
-// <p>Name: Atticus</p>
-// <ul>
-//   <li>Bonus Percentage: 9%</li>
-//   <li>Total Compensation: $51,230</li>
-//   <li>Total Bonus: $4,230</li>
-// </ul>
 
-// </div>
+
+
