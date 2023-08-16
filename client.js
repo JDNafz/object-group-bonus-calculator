@@ -119,7 +119,7 @@ for (let employee of employees){
 
 
 
-
+console.log(outputForDOM)
 function addDivs(){
   // console.log("testArray:", testArray)
   for (let employee of outputForDOM){
@@ -166,7 +166,7 @@ function addDivs(){
       let bonusFormatted = bonusString + bonus;
       var node3 = document.createTextNode(bonusFormatted);
     } else {
-      console.log(employee.totalBonus,employee.name)
+      // console.log(employee.totalBonus,employee.name)
     }
 
     //attach textNodes to HTML elements
