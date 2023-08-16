@@ -49,11 +49,11 @@ const employees = [
 // This function will calculate 1 employee's bonus!
 //
 function calculateIndividualEmployeeBonus( employee ) {  
+  
+  let bonusPercentage =0;
+  let totalCompensation =0;
+  let totalBonus =0;
 
-
-let bonusPercentage
-let totalCompensation
-let totalBonus
   if(employee.reviewRating <= 2){
     bonusPercentage = 0
   } else if (employee.reviewRating === 3) {
@@ -69,7 +69,6 @@ let totalBonus
   if(employee.annualSalary > 65000){
     bonusPercentage -= 0.01
   }
-  
   //if above the max, set it at the max
   if (bonusPercentage > 0.13){
     bonusPercentage = 0.13;
@@ -78,33 +77,24 @@ let totalBonus
   if (bonusPercentage < 0){
     bonusPercentage = 0;
   }
-
   totalBonus = bonusPercentage * employee.annualSalary;
   totalCompensation = totalBonus + Number(employee.annualSalary);
   
-
   // testing console.logs:
-  // console.log(employee.name);
-  // console.log( "bonus percentage",bonusPercentage);
-  // console.log("total bonus:", totalBonus);
-  // console.log("total comp:", totalCompensation);
+  console.log(employee.name)                      ;
+  console.log( "bonus percentage",bonusPercentage);
+  console.log("total bonus:", totalBonus)         ;
+  console.log("total comp:", totalCompensation)   ;
 
-  
   let employeeUpdated = {
     name: employee.name,
     bonusPercentage: bonusPercentage,
     totalCompensation: totalCompensation,
     totalBonus: totalBonus
   };
-
   return employeeUpdated;
-
-  // let newObject = {
-  //   propertyName1: value1,
-  //   propertyName2: value2,
-  //   propertyName1: value1,
-  // }
 } 
+
 
 // FIRST TEST WITH ONE USER
 // let attyboy =
@@ -119,12 +109,13 @@ let outputForDOM = [];
 for (let employee of employees){ 
   let result = calculateIndividualEmployeeBonus( employee )
   outputForDOM.push(result);
-  // console.log(result);
+  console.log(result);
 }//end for loop
 
 
 //GENERATE SIMPLE STRING OUTPUT ON DOM
 //copy contents of function here:
+
 
 //GENERATE ON CLICK
 function onClickFunction(){
@@ -144,7 +135,7 @@ function onClickFunction(){
 
 // let text = JSON.stringify(outputForDOM[0]);
 // console.log(text);
-// const newParagraph = document.createElement("p")
+// const newParagraph = document.createElement("p");
 
 // console.log(outputForDOM[0].totalCompensation)
 
@@ -160,6 +151,7 @@ function addDivs(){
     const nameParagraph = document.createTextNode(employee.name);
     para.appendChild(nameParagraph); 
 
+  
     const ul = document.createElement('ul');
     const li1 = document.createElement('li');
     const li2 = document.createElement('li');
@@ -167,14 +159,16 @@ function addDivs(){
     let bonusPercentText = employee.bonusPercentage*100;
     bonusPercentText = "Bonus Percent: " + bonusPercentText + "%";
     const node1 = document.createTextNode(bonusPercentText);
-    const comp = "Toal Employee Compensation $"
-    const totalCompRaw = employee.totalCompensation ;
-    console.log(typeof totalCompRaw);
-    // if (totalCompRaw >=1000) {
-    //   totalCompRaw[totalCompRaw.length-3].insertHere(',')
-    // }
+    const comp = "Total Compensation: $"
+    let totalCompUnformatted = 0;
 
-    const node2 = document.createTextNode(comp); // 51230
+    if (employee.totalCompensation >= 1000000 || employee.totalCompensation < 1000){
+      console.log("ERROR Over million under thousand total comp")
+      return
+    }
+    totalCompUnformatted = employee.totalCompensation.toString() ;
+    let totalCompFormatted = comp + totalCompUnformatted.slice(0,totalCompUnformatted.length-3) + "," + totalCompUnformatted.slice(totalCompUnformatted.length-3);
+    const node2 = document.createTextNode(totalCompFormatted); // 51230
     const node3 = document.createTextNode(employee.totalBonus);
     li1.appendChild(node1);
     li2.appendChild(node2);
