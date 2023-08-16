@@ -82,3 +82,13 @@ and should receive an additional 5%.
 - Put the output on the DOM (visually on the page).
 - Make the app run only after the user clicks on a button on the page
 - Then style the output, making it visually appealing.
+
+
+
+Describe the bug:
+-While running my script the "Bonus" bullet point is empty for Scout and Robert.
+-It should calculate the employee's totalBonus property, convert it to a formatted string(ex from 12345 to $12,345.00) make it into a textNode, then added the text node to the <li> element.
+
+There is a lot of relevant code see line 163 of JS titled "create totalBonus text"
+
+I used console.log() to isolate the bug
