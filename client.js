@@ -81,10 +81,10 @@ function calculateIndividualEmployeeBonus( employee ) {
   totalCompensation = totalBonus + Number(employee.annualSalary);
   
   // testing console.logs:
-  console.log(employee.name)                      ;
-  console.log( "bonus percentage",bonusPercentage);
-  console.log("total bonus:", totalBonus)         ;
-  console.log("total comp:", totalCompensation)   ;
+  // console.log(employee.name)                      ;
+  // console.log( "bonus percentage",bonusPercentage);
+  // console.log("total bonus:", totalBonus)         ;
+  // console.log("total comp:", totalCompensation)   ;
 
   let employeeUpdated = {
     name: employee.name,
@@ -109,7 +109,7 @@ let outputForDOM = [];
 for (let employee of employees){ 
   let result = calculateIndividualEmployeeBonus( employee )
   outputForDOM.push(result);
-  console.log(result);
+  // console.log(result);
 }//end for loop
 
 
@@ -123,22 +123,13 @@ for (let employee of employees){
 // const element = document.getElementById("div1");
 // element.appendChild(paragraph); 
 
-//GENERATE ON CLICK
-function onClickFunction(){
-addDivs(outputForDOM)
-
-//The following is no longer needed:
-// const paragraph = document.createElement("p"); //create <p></p>
-// const newParagraph = JSON.stringify(outputForDOM); // make objArray into String
-// const node = document.createTextNode(newParagraph);// put string into node
-// paragraph.appendChild(node); //append text node to <p> element as a child
-// const element = document.getElementById("div1");
-// element.appendChild(paragraph); 
-}
-
-// for (let employee of outputForDOM) {
-//   // do for each result.
+// //GENERATE ON CLICK
+// function onClickFunction(){
+//   // console.log("Output For DOM: ", outputForDOM)
+//   addDivs(outputForDOM);
 // }
+
+
 
 
 // let text = JSON.stringify(outputForDOM[0]);
@@ -147,37 +138,49 @@ addDivs(outputForDOM)
 
 // console.log(outputForDOM[0].totalCompensation)
 
-let testArray= [];
-testArray.push(outputForDOM[1]);
-function addDivs(){
-  for (let employee of testArray){
-    const div = document.createElement('div');
-    div.id = employee.name;
-    div.class = 'block';
-    const para = document.createElement('p');
 
+function addDivs(){
+  // console.log("testArray:", testArray)
+  for (let employee of outputForDOM){
+    
+    //create a div
+    const div = document.createElement('div');
+    div.id = employee.name; //give the employee name as an ID
+    div.class = 'block'; //class block for the div
+
+    const para = document.createElement('p'); //create the <p> tag
+    // create the text node, that has the text to be a child of the <p>
     const nameParagraph = document.createTextNode(employee.name);
     para.appendChild(nameParagraph); 
 
-  
+    //create <ul> and <li> elements
     const ul = document.createElement('ul');
     const li1 = document.createElement('li');
     const li2 = document.createElement('li');
     const li3 = document.createElement('li');
+    //bonusPercent from 0.09 to 9%
     let bonusPercentText = employee.bonusPercentage*100;
     bonusPercentText = "Bonus Percent: " + bonusPercentText + "%";
+    //add bonusPercentText to a TextNode
     const node1 = document.createTextNode(bonusPercentText);
-    const comp = "Total Compensation: $"
-    let totalCompUnformatted = 0;
 
-    if (employee.totalCompensation >= 1000000 || employee.totalCompensation < 1000){
-      console.log("ERROR Over million under thousand total comp")
-      return
+    //create totalCompString
+    const compStringIntro = "Total Compensation: $"
+    if (onlyNeedsOneComma(employee.totalCompensation)){
+      let compToSlice = employee.totalCompensation.toString() ;
+      let totalCompFormatted = compStringIntro + compToSlice.slice(0,compToSlice.length-3) + "," + compToSlice.slice(compToSlice.length-3);
+      //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
+      var node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
+    } 
+    //create totalBonus text
+    let bonusString = "Bonus: $"
+    if (onlyNeedsOneComma(employee.totalBonus)){
+      let bonus = employee.totalBonus.toString();
+      let bonusFormatted = bonusString + bonus.slice(0,bonus.length -3) + "," + bonus.slice(bonus.length -3);
+      var node3 = document.createTextNode(bonusFormatted);
     }
-    totalCompUnformatted = employee.totalCompensation.toString() ;
-    let totalCompFormatted = comp + totalCompUnformatted.slice(0,totalCompUnformatted.length-3) + "," + totalCompUnformatted.slice(totalCompUnformatted.length-3);
-    const node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310
-    const node3 = document.createTextNode(employee.totalBonus);
+
+    //attach textNodes to HTML elements
     li1.appendChild(node1);
     li2.appendChild(node2);
     li3.appendChild(node3);
@@ -194,7 +197,19 @@ function addDivs(){
   }//end for loop
 } //end addDivs()
 
-addDivs(); //Add first div on RUN
+// addDivs(); //Add first div on RUN
+
+
+function onlyNeedsOneComma(number){
+  if (number >= 1000000 || number < 1000){
+    console.log("ERROR Over million under thousand total comp")
+    return false
+  }
+  // console.log("onlyNeedsOneComma: TRUE")
+  return true
+}
+
+
 
 
 // <div class="block">
