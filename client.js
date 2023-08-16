@@ -159,15 +159,27 @@ function addDivs(){
       //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
       var node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
     } 
+
+
+// BUG REPORT ------------ BUG REPORT --------------- BUG REPORT
+
     //create totalBonus text
     let bonusString = "Bonus: "
-    if (onlyNeedsOneComma(employee.totalBonus)){
-      let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options);
-      let bonusFormatted = bonusString + bonus;
-      var node3 = document.createTextNode(bonusFormatted);
-    } else {
-      // console.log(employee.totalBonus,employee.name)
-    }
+    // if (onlyNeedsOneComma(employee.totalBonus)){  //Attempting to remove the if statment.
+    let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options); //tab this section back.
+    let bonusFormatted = bonusString + bonus;
+    console.log(`Bonus of ${employee.name}`,bonusFormatted);
+    var node3 = document.createTextNode(bonusFormatted);
+    // } else {//removing if
+      // console.log(employee.totalBonus,employee.name, "COMMA WAS THE ISSUE"); // removing if
+    // }// removing if
+
+    //All done! It's working!
+
+
+
+
+
 
     //attach textNodes to HTML elements
     li1.appendChild(node1);

@@ -89,6 +89,12 @@ Describe the bug:
 -While running my script the "Bonus" bullet point is empty for Scout and Robert.
 -It should calculate the employee's totalBonus property, convert it to a formatted string(ex from 12345 to $12,345.00) make it into a textNode, then added the text node to the <li> element.
 
-There is a lot of relevant code see line 163 of JS titled "create totalBonus text"
+There is a lot of relevant code see line 166 of JS titled "create totalBonus text"
 
-I used console.log() to isolate the bug
+I used console.log() on 171 to isolate the bug. This told me that the amounts were being calculated successfully, but only for 3 of 5 users, causing me to believe that the other 2 users did not pass the if statement.
+
+I identified w/ a console log on 174, seeing that 174 was executed told me it was an issue with the onlyNeedsComma function returning presenting false.
+
+I then concluded, with the updated "toLocaleString()" function solved the problem", removed the if statement, and it began working.
+
+I tested it, but commenting out the "if", "else", and "closing brackets" and opening the index.html again.
