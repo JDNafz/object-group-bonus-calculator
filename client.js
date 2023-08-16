@@ -145,19 +145,25 @@ function addDivs(){
     //add bonusPercentText to a TextNode
     const node1 = document.createTextNode(bonusPercentText);
 
+    //get ready to format numbers
+    let formatting_options = {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2, //change two zeros
+    }
     //create totalCompString
-    const compStringIntro = "Total Compensation: $"
+    const compStringIntro = "Total Compensation: "
     if (onlyNeedsOneComma(employee.totalCompensation)){
-      let compToSlice = employee.totalCompensation.toString() ;
-      let totalCompFormatted = compStringIntro + compToSlice.slice(0,compToSlice.length-3) + "," + compToSlice.slice(compToSlice.length-3);//TODO Find better formatting method for $X,XXX.XX
+      let compensationString = employee.totalCompensation.toLocaleString("en-US",formatting_options) ;
+      let totalCompFormatted = compStringIntro + compensationString;
       //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
       var node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
     } 
     //create totalBonus text
-    let bonusString = "Bonus: $"
+    let bonusString = "Bonus: "
     if (onlyNeedsOneComma(employee.totalBonus)){
-      let bonus = employee.totalBonus.toString();
-      let bonusFormatted = bonusString + bonus.slice(0,bonus.length -3) + "," + bonus.slice(bonus.length -3); //TODO Find better formatting method for $X,XXX.XX
+      let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options);
+      let bonusFormatted = bonusString + bonus;
       var node3 = document.createTextNode(bonusFormatted);
     } else {
       console.log(employee.totalBonus,employee.name)
