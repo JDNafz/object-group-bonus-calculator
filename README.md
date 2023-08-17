@@ -98,5 +98,3 @@ I identified w/ a console log on 174, seeing that 174 was executed told me it wa
 I then concluded, with the updated "toLocaleString()" function solved the problem", removed the if statement, and it began working.
 
 I tested it, but commenting out the "if", "else", and "closing brackets" and opening the index.html again.
-
-SECONDARY BUG, need to remove "ifs" from 156

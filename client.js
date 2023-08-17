@@ -32,19 +32,17 @@ const employees = [
   }
 ];
 
-// console.log('array of employee data: ',  employees );
-
-
-// YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
-
-// This problem is massive! Break the problem down, take small steps, and test as you go.
-// What is the fewest lines of code I can write and test to get just a little closer?
-
-// This is not a race. Everyone on your team should understand what is happening.
-// Ask questions when you don't.
-
-
-
+//generate a few more employee examples
+let names = ['Sean','Steven','George','Rebecca',"Elisabeth", "Betty","Adam","Paul","Wilson","Nina","Hieu"]
+for (let i = 0; i< names.length; i++) {
+  const obj ={
+    name: names[i],
+    employeeNumber: '89068' + i.toString(),
+    annualSalary: (i*1000 + 45000).toString(),
+    reviewRating: (i%5)+2
+  }
+  employees.push(obj);
+}
 
 // This function will calculate 1 employee's bonus!
 //
@@ -93,7 +91,7 @@ function calculateIndividualEmployeeBonus( employee ) {
     totalBonus: totalBonus
   };
   return employeeUpdated;
-} 
+} //end calculate employee comp 
 
 
 // FIRST TEST WITH ONE USER
@@ -113,17 +111,14 @@ for (let employee of employees){
 }//end for loop
 
 
-//GENERATE SIMPLE STRING OUTPUT ON DOM
-//Basic Box:
 
 
-
-
-console.log(outputForDOM)
-function addDivs(){
+// console.log(outputForDOM)
+function addDivs(){// the on click function
   // console.log("testArray:", testArray)
   for (let employee of outputForDOM){
-    
+    // TODO: attempting to make the click work only once.
+    $("#clickButton").attr("onclick","removeDivs()"); //--------------------------------------
     //create a div
     const div = document.createElement('div');
     div.id = employee.name; //give the employee name as an ID
@@ -155,33 +150,15 @@ function addDivs(){
     }
     //create totalCompString
     const compStringIntro = "Total Compensation: "
-    // if (onlyNeedsOneComma(employee.totalCompensation)){
     let compensationString = employee.totalCompensation.toLocaleString("en-US",formatting_options) ;
     let totalCompFormatted = compStringIntro + compensationString;
-    //var lets you assign the variable inside the 'if' 'block' and you can access it outside.
     let node2 = document.createTextNode(totalCompFormatted); // Total Compensation: $67,310     
-    // } 
-
-
-// BUG REPORT ------------ BUG REPORT --------------- BUG REPORT
 
     //create totalBonus text
     let bonusString = "Bonus: "
-    // if (onlyNeedsOneComma(employee.totalBonus)){  //Attempting to remove the if statment.
-    let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options); //tab this section back.
+    let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options); //
     let bonusFormatted = bonusString + bonus;
-    // console.log(`Bonus of ${employee.name}`,bonusFormatted);
-    var node3 = document.createTextNode(bonusFormatted);
-    // } else {//removing if
-      // console.log(employee.totalBonus,employee.name, "COMMA WAS THE ISSUE"); // removing if
-    // }// removing if
-
-    //All done! It's working!
-
-
-
-
-
+    let node3 = document.createTextNode(bonusFormatted);
 
     //attach textNodes to HTML elements
     li1.appendChild(node1);
@@ -198,29 +175,35 @@ function addDivs(){
     element.insertBefore(insertHere,div); 
 
   }//end for loop
-  
 
- 
+  // Change the div css to prettier format
   $('.block').css('display', 'inline-flex'); 
   $('.block').css('margin', '10px');
   $('.block').css('padding', '15px');
   $('.block').css('background-color',"#D4D4AA")
-  $('.block').css('width', '175px')
-
+  // $('.block').css('width', '175px')
 
 } //end addDivs()
 
-addDivs(); //Add first div on RUN
+// Double click test
+function removeDivs() {
+  console.log("SMOKE");
+  $('.block').remove();
+  $("#clickButton").attr("onclick","addDivs()")
+  // $('.block').show();
+}
+
+// addDivs(); //Add first div on RUN
 
 
-// function onlyNeedsOneComma(number){
-//   if (number >= 1000000 || number < 1000){
-//     console.log("ERROR Over million under thousand total comp", number)
-//     return false
-//   }
-//   // console.log("onlyNeedsOneComma: TRUE")
-//   return true
-// }
+function onlyNeedsOneComma(number){
+  if (number >= 1000000 || number < 1000){
+    console.log("ERROR Over million under thousand total comp", number)
+    return false
+  }
+  // console.log("onlyNeedsOneComma: TRUE")
+  return true
+}
 
 
 
@@ -232,3 +215,12 @@ addDivs(); //Add first div on RUN
 
 
 
+// favorite collaborative board game (recent?)
+// gloom haven spin off jaws aline.
+//kings delema > legays eventually ends
+
+// /quacks of quedlimberg
+
+// something of balders gate -Larian balders gate 3 co-op video game
+//betrayal of haunted hill^
+//
