@@ -201,15 +201,16 @@ function addDivs(){
   
 
  
-  $('.block').css('display', 'inline-block'); 
+  $('.block').css('display', 'inline-flex'); 
   $('.block').css('margin', '10px');
   $('.block').css('padding', '15px');
   $('.block').css('background-color',"#D4D4AA")
+  $('.block').css('width', '175px')
 
 
 } //end addDivs()
 
-// addDivs(); //Add first div on RUN
+addDivs(); //Add first div on RUN
 
 
 // function onlyNeedsOneComma(number){
