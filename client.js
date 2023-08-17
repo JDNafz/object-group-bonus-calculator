@@ -170,7 +170,7 @@ function addDivs(){
     // if (onlyNeedsOneComma(employee.totalBonus)){  //Attempting to remove the if statment.
     let bonus = employee.totalBonus.toLocaleString("en-US",formatting_options); //tab this section back.
     let bonusFormatted = bonusString + bonus;
-    console.log(`Bonus of ${employee.name}`,bonusFormatted);
+    // console.log(`Bonus of ${employee.name}`,bonusFormatted);
     var node3 = document.createTextNode(bonusFormatted);
     // } else {//removing if
       // console.log(employee.totalBonus,employee.name, "COMMA WAS THE ISSUE"); // removing if
@@ -201,17 +201,11 @@ function addDivs(){
   
 
  
-  $('.block').css('display', 'inline-block');
+  $('.block').css('display', 'inline-block'); 
   $('.block').css('margin', '10px');
   $('.block').css('padding', '15px');
-  $('.block').css('background-color',"antiquewhite")
+  $('.block').css('background-color',"#D4D4AA")
 
-//   .block {
-//     background-color: antiquewhite;
-//     display: inline-block;
-//     margin: 10px;
-//     padding: 15px;
-// }
 
 } //end addDivs()
 
